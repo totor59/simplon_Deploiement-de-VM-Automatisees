@@ -1,0 +1,27 @@
+# Ignore Terraform files
+.terraform
+
+# Ignore Packer files
+packer_cache
+packer_files
+
+# Ignore local variable files
+*.tfvars
+
+# Ignore any temporary files
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfplan
+
+# Ignore crash log files
+crash.log
+
+# Ignore any .DS_Store files created by macOS
+.DS_Store
+
+# Ignore any .vscode directory
+.vscode
+
+# Ignore any .idea directory
+.idea
