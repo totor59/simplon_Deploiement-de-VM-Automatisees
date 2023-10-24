@@ -1,0 +1,6 @@
+admin_username      = ""
+image_id            = ""
+nsg_name            = ""
+resource_group_name = ""
+subnet_name         = ""
+vnet_name           = ""
