@@ -18,6 +18,7 @@ source "azure-arm" "image" {
   image_sku                         = "22_04-lts-gen2"
   location                          = var.location
   vm_size                           = var.vm_size
+  azure_tags                        = var.azure_tags
   shared_image_gallery_destination {
     resource_group      = var.resource_group
     gallery_name        = var.gallery_name

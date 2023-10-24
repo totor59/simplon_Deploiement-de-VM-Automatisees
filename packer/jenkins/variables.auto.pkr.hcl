@@ -18,6 +18,14 @@ variable "version" {
   default = "1.0.0"
 }
 
+variable "azure_tags" {
+  type    = map(string)
+  default = {
+    env = "development"
+    brief = "deploiement-de-vm-automatisees"
+  }
+}
+
 # AZURE SPECIFICS VARS
 
 variable "subscription_id" {
