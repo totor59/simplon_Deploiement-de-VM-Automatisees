@@ -2,26 +2,27 @@
 
 ```
 .
-├── Déploiement de VM Automatisées.pdf # Livrable
-├── README.md
+├── Déploiement de VM Automatisées.pdf        # Livrable
+├── README.md                                 # You are here
 ├── packer                                    # Images build dir
 │   ├── gitlab                                # Gitlab build dir
 │   │   ├── gitlab.pkr.hcl                    # Gitlab template
 │   │   └── variables.auto.pkr.hcl            # Gitlab template vars definition
-│   └── jenkins                               # Jenkins build dir
-│       ├── jenkins.pkr.hcl                   # Jenkins template
-│       └── variables.auto.pkr.hcl            # Jenkins template vars definition
-└── terraform                                 # Deployment dir
+│   └── jenkins                               
+│       ├── jenkins.pkr.hcl                   
+│       └── variables.auto.pkr.hcl            
+└── terraform                                 # Deployment templates dir
     ├── gitlab                                # Gitlab deployment dir
-    │   └── main.tf                           # Gitlab deployment template
+    │   ├── main.tf                           # Gitlab deployment template
+    │   └── basic_infra.auto.tfvars.example   # Gitlab .auto.tfvars example
     ├── jenkins
     │   ├── basic_infra.auto.tfvars.example
     │   └── main.tf
-    └── modules
+    └── modules                               # Deployment modules dir
         └── basic_infra
-            ├── README.md
-            ├── main.tf
-            └── variables.tf
+            ├── README.md                     # Module documentation
+            ├── main.tf                       # Module template
+            └── variables.tf                  # Module template vars definition
 ```
 
 ## Useful commands
