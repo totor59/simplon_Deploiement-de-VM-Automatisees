@@ -1,5 +1,3 @@
-
-
 variable "admin_username" {}
 variable "resource_group_name" {}
 variable "image_id" {}
