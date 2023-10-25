@@ -1,0 +1,52 @@
+name: Update Custom VM Image
+on: 
+    workflow_dispatch:
+    # schedule:
+    #   - cron: '30 0 * * SUN'
+jobs:
+  build-image:
+    runs-on: ubuntu-latest
+    defaults:
+        run:
+          shell: bash
+          working-directory: ./packer/updater
+    steps:
+      - name: Log in with Azure
+        uses: azure/login@v1
+        with:
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+      
+      - name: Setup `packer`
+        uses: hashicorp/setup-packer@main
+        id: setup
+
+      - name: Run `packer init`
+        id: init
+        run: "packer init ./updater.pkr.hcl"
+
+      - name: Run `packer validate`
+        id: validate
+        run: "packer validate ./updater.pkr.hcl"
+
+      - name: Find latest version
+        id: version
+        run: |
+         version=$az sig image-version list --gallery-name ${{ vars.GALLERY_NAME }} \
+         --gallery-image-definition gitlab \
+         --resource-group ${{ vars.RESOURCE_GROUP }} \
+         --subscription ${{ vars.SUBSCRIPTION_ID }} \
+         --query '[-1:].name' -o tsv)
+         echo "Latest image version is $version"
+         major=$(echo $version | cut -d. -f1)
+         minor=$(echo $version | cut -d. -f2)
+         patch=$(echo $version | cut -d. -f3)
+         patch=$((patch + 1))
+         new_version="$major.$minor.$patch"
+         echo "Nouvelle version : $new_version"
+
+      - name: Update existing image
+        id: build
+        run: 'packer build -force -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \
+             -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
+             -var="gallery_name=${{ vars.GALLERY_NAME }}" \
+             -var="version=${{ steps.version.outputs.new_version }}" ./updater.pkr.hcl '
