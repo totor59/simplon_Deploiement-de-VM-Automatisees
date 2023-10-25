@@ -9,7 +9,7 @@ jobs:
     defaults:
         run:
           shell: bash
-          working-directory: ./packer/updater
+          working-directory: packer/updater
     steps:
       - name: Log in with Azure
         uses: azure/login@v1
