@@ -31,11 +31,11 @@ jobs:
       - name: Run `packer validate`
         id: validate
         run: |
-         packer validate -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" 
-         -var="resource_group=${{ vars.RESOURCE_GROUP }}" 
-         -var="gallery_name=${{ vars.GALLERY_NAME }}" 
-         -var="version=1.0.1"  
-         -var="managed_image_name=gitlab"  .
+         packer validate -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \
+         -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
+         -var="gallery_name=${{ vars.GALLERY_NAME }}" \
+         -var="version=1.0.1"  \
+         -var="managed_image_name=gitlab" .
 
       - name: Find latest version
         id: version
