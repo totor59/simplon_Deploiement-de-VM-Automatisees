@@ -50,12 +50,12 @@ jobs:
          minor=$(echo $version | cut -d. -f2)
          patch=$(echo $version | cut -d. -f3)
          patch=$((patch + 1))
-         new_version="$major.$minor.$patch"
-         echo "Nouvelle version : $new_version"
+         echo 'new_version="$major.$minor.$patch"' >> $GITHUB_OUTPUT
+        #  echo "Nouvelle version : $new_version"
 
       - name: Update existing image
         id: build
         run: 'packer build -force -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \
              -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
              -var="gallery_name=${{ vars.GALLERY_NAME }}" \
-             -var="version=${{ steps.version.outputs.new_version }}" ./gitlab_updater.pkr.hcl '
+             -var="version=${{ steps.version.outputs.new_version }}" . '
