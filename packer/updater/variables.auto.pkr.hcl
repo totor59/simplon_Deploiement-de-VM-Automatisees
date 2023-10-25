@@ -1,6 +1,5 @@
 variable "managed_image_name" {
   type    = string
-  default = "gitlab"
 }
 
 variable "location" {
@@ -31,10 +30,6 @@ variable "azure_tags" {
   }
 }
 
-variable "root_password" {
-  type    = string
-  sensitive = true
-}
 # AZURE SPECIFICS VARS
 
 variable "subscription_id" {
