@@ -1,5 +1,6 @@
 variable "managed_image_name" {
   type    = string
+  default = "gitlab"
 }
 
 variable "location" {
