@@ -40,7 +40,7 @@ jobs:
       - name: Find latest version
         id: version
         run: |
-         version=$az sig image-version list --gallery-name ${{ vars.GALLERY_NAME }} \
+         version=$(az sig image-version list --gallery-name ${{ vars.GALLERY_NAME }} \
          --gallery-image-definition gitlab \
          --resource-group ${{ vars.RESOURCE_GROUP }} \
          --subscription ${{ vars.SUBSCRIPTION_ID }} \
