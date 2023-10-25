@@ -22,11 +22,11 @@ jobs:
 
       - name: Run `packer init`
         id: init
-        run: "packer init ./updater.pkr.hcl"
+        run: "packer init ./gitlab_updater.pkr.hcl"
 
       - name: Run `packer validate`
         id: validate
-        run: "packer validate ./updater.pkr.hcl"
+        run: "packer validate ./gitlab_updater.pkr.hcl"
 
       - name: Find latest version
         id: version
@@ -49,4 +49,4 @@ jobs:
         run: 'packer build -force -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \
              -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
              -var="gallery_name=${{ vars.GALLERY_NAME }}" \
-             -var="version=${{ steps.version.outputs.new_version }}" ./updater.pkr.hcl '
+             -var="version=${{ steps.version.outputs.new_version }}" ./gitlab_updater.pkr.hcl '
