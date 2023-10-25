@@ -1,4 +1,5 @@
 # Déploiement de VM Automatisées
+![gitlab updater](https://github.com/totor59/simplon_Deploiement-de-VM-Automatisees/actions/workflows/gitlab_updater.yaml/badge.svg)
 
 ```
 .
