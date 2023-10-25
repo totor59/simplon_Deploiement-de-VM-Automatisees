@@ -14,7 +14,7 @@ jobs:
           # Checkout the repository to the GitHub Actions runner
       - name: Checkout
         uses: actions/checkout@v3
-        
+
       - name: Log in with Azure
         uses: azure/login@v1
         with:
@@ -30,7 +30,12 @@ jobs:
 
       - name: Run `packer validate`
         id: validate
-        run: "packer validate ./gitlab_updater.pkr.hcl"
+        run: |
+         packer validate -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \
+         -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
+         -var="gallery_name=${{ vars.GALLERY_NAME }}" \
+         -var="version=1.0.1"  \
+         -var="managed_image_name=gitlab"  .
 
       - name: Find latest version
         id: version
