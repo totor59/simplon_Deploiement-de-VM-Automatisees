@@ -5,6 +5,9 @@
 .
 ├── Déploiement de VM Automatisées.pdf        # Livrable
 ├── README.md                                 # You are here
+├── .github                                   
+│   └── workflows                             # Github Actions workflow dir            
+│       └── variables.auto.pkr.hcl            # Workflow file
 ├── packer                                    # Images build dir
 │   ├── gitlab                                # Gitlab build dir
 │   │   ├── gitlab.pkr.hcl                    # Gitlab template
@@ -17,10 +20,10 @@
     │   ├── main.tf                           # Gitlab deployment template
     │   └── basic_infra.auto.tfvars.example   # Gitlab .auto.tfvars example
     ├── jenkins
-    │   ├── basic_infra.auto.tfvars.example
-    │   └── main.tf
+    │   ├── main.tf
+    │   └── basic_infra.auto.tfvars.example
     └── modules                               # Deployment modules dir
-        └── basic_infra
+        └── basic_infra                       # Module dir
             ├── README.md                     # Module documentation
             ├── main.tf                       # Module template
             └── variables.tf                  # Module template vars definition
