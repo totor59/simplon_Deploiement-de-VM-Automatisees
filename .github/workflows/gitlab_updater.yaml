@@ -56,8 +56,7 @@ jobs:
 
       - name: Update existing image
         id: build
-        run: |
-          packer build -force -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" \ 
-             -var="resource_group=${{ vars.RESOURCE_GROUP }}" \
-             -var="gallery_name=${{ vars.GALLERY_NAME }}" \
-             -var="version=${{ env.NEW_VERSION }}" . 
+        run: 'packer build -force -var="subscription_id=${{ vars.SUBSCRIPTION_ID }}" 
+          -var="resource_group=${{ vars.RESOURCE_GROUP }}" 
+          -var="gallery_name=${{ vars.GALLERY_NAME }}" 
+          -var="version=${{ env.NEW_VERSION }}" . '
